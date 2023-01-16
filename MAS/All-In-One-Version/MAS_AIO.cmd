@@ -1,26 +1,6 @@
 @setlocal DisableDelayedExpansion
 @echo off
 
-::  For command line switches, check https://massgrave.dev/
-::  If you want to better understand script, read from MAS separate files version. 
-
-::============================================================================
-::
-::   This script is a part of 'Microsoft Activation Scripts' (MAS) project.
-::
-::   Homepage: massgrave.dev
-::      Email: windowsaddict@protonmail.com
-::
-::============================================================================
-
-
-
-
-::========================================================================================================================================
-
-:: Re-launch the script with x64 process if it was initiated by x86 process on x64 bit Windows
-:: or with ARM64 process if it was initiated by x86/ARM32 process on ARM64 Windows
-
 set "_cmdf=%~f0"
 for %%# in (%*) do (
 if /i "%%#"=="r1" set r1=1
@@ -33,22 +13,18 @@ start %SystemRoot%\Sysnative\cmd.exe /c ""!_cmdf!" %* r1"
 exit /b
 )
 
-:: Re-launch the script with ARM32 process if it was initiated by x64 process on ARM64 Windows
-
 if exist %SystemRoot%\SysArm32\cmd.exe if %PROCESSOR_ARCHITECTURE%==AMD64 if not defined r2 (
 setlocal EnableDelayedExpansion
 start %SystemRoot%\SysArm32\cmd.exe /c ""!_cmdf!" %* r2"
 exit /b
 )
 
-::  Set Path variable, it helps if it is misconfigured in the system
 
 set "PATH=%SystemRoot%\System32;%SystemRoot%\System32\wbem;%SystemRoot%\System32\WindowsPowerShell\v1.0\"
 if exist "%SystemRoot%\Sysnative\reg.exe" (
 set "PATH=%SystemRoot%\Sysnative;%SystemRoot%\Sysnative\wbem;%SystemRoot%\Sysnative\WindowsPowerShell\v1.0\;%PATH%"
 )
 
-::  Check LF line ending
 
 pushd "%~dp0"
 >nul findstr /rxc:".*" "%~nx0"
@@ -190,7 +166,7 @@ setlocal EnableDelayedExpansion
 
 cls
 color 07
-title  Microsoft Activation Scripts AIO 1.7
+title  Microsoft Activation Huy Khang
 mode 76, 30
 set "mastemp=%SystemRoot%\Temp\__MAS"
 if exist "%mastemp%\.*" rmdir /s /q "%mastemp%\" %nul%
